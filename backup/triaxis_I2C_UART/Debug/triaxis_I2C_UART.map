@@ -1021,24 +1021,24 @@ OUTPUT(triaxis_I2C_UART.axf elf32-littlearm)
  .debug_line    0x0000198d      0x537 C:\Users\aiellog\Documents\MCUXpressoIDE_10.0.2_411\workspace\lpc_chip_11cxx_lib\Debug\liblpc_chip_11cxx_lib.a(uart_11xx.o)
  .debug_line    0x00001ec4      0x304 C:\Users\aiellog\Documents\MCUXpressoIDE_10.0.2_411\workspace\lpc_chip_11cxx_lib\Debug\liblpc_chip_11cxx_lib.a(sysctl_11xx.o)
 
-.debug_str      0x00000000     0xa930
+.debug_str      0x00000000     0xa92e
  .debug_str     0x00000000     0x250c ./src/cr_startup_lpc11xx.o
                                0x251f (size before relaxing)
  .debug_str     0x0000250c     0x4f3d ./src/sysinit.o
                                0x74a4 (size before relaxing)
- .debug_str     0x00007449      0xcb0 ./src/triaxis_I2C_UART.o
-                               0x817c (size before relaxing)
- .debug_str     0x000080f9     0x17d2 C:\Users\aiellog\Documents\MCUXpressoIDE_10.0.2_411\workspace\lpc_chip_11cxx_lib\Debug\liblpc_chip_11cxx_lib.a(chip_11xx.o)
+ .debug_str     0x00007449      0xcae ./src/triaxis_I2C_UART.o
+                               0x817a (size before relaxing)
+ .debug_str     0x000080f7     0x17d2 C:\Users\aiellog\Documents\MCUXpressoIDE_10.0.2_411\workspace\lpc_chip_11cxx_lib\Debug\liblpc_chip_11cxx_lib.a(chip_11xx.o)
                                0x7cba (size before relaxing)
- .debug_str     0x000098cb      0x555 C:\Users\aiellog\Documents\MCUXpressoIDE_10.0.2_411\workspace\lpc_chip_11cxx_lib\Debug\liblpc_chip_11cxx_lib.a(clock_11xx.o)
+ .debug_str     0x000098c9      0x555 C:\Users\aiellog\Documents\MCUXpressoIDE_10.0.2_411\workspace\lpc_chip_11cxx_lib\Debug\liblpc_chip_11cxx_lib.a(clock_11xx.o)
                                0x847e (size before relaxing)
- .debug_str     0x00009e20      0x5a4 C:\Users\aiellog\Documents\MCUXpressoIDE_10.0.2_411\workspace\lpc_chip_11cxx_lib\Debug\liblpc_chip_11cxx_lib.a(i2c_11xx.o)
+ .debug_str     0x00009e1e      0x5a4 C:\Users\aiellog\Documents\MCUXpressoIDE_10.0.2_411\workspace\lpc_chip_11cxx_lib\Debug\liblpc_chip_11cxx_lib.a(i2c_11xx.o)
                                0x86b5 (size before relaxing)
- .debug_str     0x0000a3c4      0x136 C:\Users\aiellog\Documents\MCUXpressoIDE_10.0.2_411\workspace\lpc_chip_11cxx_lib\Debug\liblpc_chip_11cxx_lib.a(sysinit_11xx.o)
+ .debug_str     0x0000a3c2      0x136 C:\Users\aiellog\Documents\MCUXpressoIDE_10.0.2_411\workspace\lpc_chip_11cxx_lib\Debug\liblpc_chip_11cxx_lib.a(sysinit_11xx.o)
                                0x8321 (size before relaxing)
- .debug_str     0x0000a4fa      0x297 C:\Users\aiellog\Documents\MCUXpressoIDE_10.0.2_411\workspace\lpc_chip_11cxx_lib\Debug\liblpc_chip_11cxx_lib.a(uart_11xx.o)
+ .debug_str     0x0000a4f8      0x297 C:\Users\aiellog\Documents\MCUXpressoIDE_10.0.2_411\workspace\lpc_chip_11cxx_lib\Debug\liblpc_chip_11cxx_lib.a(uart_11xx.o)
                                0x8432 (size before relaxing)
- .debug_str     0x0000a791      0x19f C:\Users\aiellog\Documents\MCUXpressoIDE_10.0.2_411\workspace\lpc_chip_11cxx_lib\Debug\liblpc_chip_11cxx_lib.a(sysctl_11xx.o)
+ .debug_str     0x0000a78f      0x19f C:\Users\aiellog\Documents\MCUXpressoIDE_10.0.2_411\workspace\lpc_chip_11cxx_lib\Debug\liblpc_chip_11cxx_lib.a(sysctl_11xx.o)
                                0x80c8 (size before relaxing)
 
 .comment        0x00000000       0x6e
