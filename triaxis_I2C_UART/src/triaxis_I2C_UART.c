@@ -10,7 +10,7 @@
 #define I2C_TRIAXIS_RESET    (uint8_t) 0xF0
 #define I2C_TRIAXIS_POLLING  (uint8_t) 0x3E
 #define I2C_TRIAXIS_SB_MODE  (uint8_t) 0xE
-#define DELAY 				 100000
+#define DELAY 				 1000
 #define BAUDRATE_UART 		 115200
 #define UART_DATA_LENGTH     (int) 7
 #define pin_LED_RED 		 7
@@ -30,9 +30,8 @@ bool LED_state = true;
 
 int main(void) {
     SystemCoreClockUpdate();
-
-    I2C_Init();
     LED_Init();
+    I2C_Init();
     TRIAXIS_Init();
     UART_Init();
 
@@ -59,7 +58,7 @@ void UART_Init(void)
 	Chip_IOCON_PinMuxSet(LPC_IOCON, IOCON_PIO1_7, (IOCON_FUNC1 | IOCON_MODE_INACT)); // Changing the pin function: 0 per UART TX, 0 per GPIO
 	Chip_UART_Init(LPC_USART); // UART clock and generic initialization
 	Chip_UART_SetBaud(LPC_USART, BAUDRATE_UART); // Baud rate
-	Chip_UART_ConfigData(LPC_USART, (UART_LCR_WLEN8 | UART_LCR_SBS_1BIT)); // Configuration length of the packet
+	Chip_UART_ConfigData(LPC_USART, (UART_LCR_WLEN8 | UART_LCR_SBS_1BIT)); // Configuration: 1 byte packet and 1 stop bit
 	Chip_UART_SetupFIFOS(LPC_USART, (UART_FCR_FIFO_EN)); // ENABLE
 	Chip_UART_TXEnable(LPC_USART); // Transmit Enable Register (automatically set to 1 after the reset but better to double check)
 }
