@@ -12,7 +12,7 @@
 #define I2C_TRIAXIS_SB_MODE  (uint8_t) 0xE
 #define DELAY 				 5000
 #define BAUDRATE_UART 		 115200
-#define UART_DATA_LENGTH     (int) 6
+#define UART_DATA_LENGTH     (int) I2C_DATA_LENGTH-1+5
 #define pin_LED_RED 		 7
 #define pin_LED_GREEN 		 8
 #define pin_LED_BLUE 		 9
@@ -22,9 +22,11 @@ void I2C_Init(void);
 void LED_Init(void);
 void TRIAXIS_Init(void);
 void UART_Init(void);
+void organize_packet(uint8_t *data, uint8_t *packet);
 
 // Global variables
 uint8_t data[I2C_DATA_LENGTH];
+uint8_t packet[UART_DATA_LENGTH];
 uint8_t status;
 bool LED_state = true;
 
@@ -45,7 +47,8 @@ int main(void) {
     		if((data[0] & OK_TRIAXIS) != OK_TRIAXIS)
     		{  	Chip_GPIO_SetPinState(LPC_GPIO, 0, pin_LED_BLUE, LED_state);
     			LED_state = !LED_state;
-    			Chip_UART_SendBlocking(LPC_USART, (const void *) (data+1), UART_DATA_LENGTH);
+    			organize_packet(data, packet);
+    			Chip_UART_SendBlocking(LPC_USART, (const void *) (packet), UART_DATA_LENGTH);
     		}
     	}
     }
@@ -53,6 +56,19 @@ int main(void) {
 }
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+void organize_packet(uint8_t *data, uint8_t *packet)
+{
+	packet[0] = 0x0;
+	packet[1] = 0x0;
+	for(int i=2;i<I2C_DATA_LENGTH+1;i++)
+	{
+		packet[i] = data[i-1];
+	}
+	packet[8] = 0x21;
+	packet[9] = 0x21;
+	packet[10] = 0x21;
+}
+
 
 void UART_Init(void)
 {

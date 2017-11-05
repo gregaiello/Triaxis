@@ -10,13 +10,13 @@
 #define I2C_TRIAXIS_RESET    (uint8_t) 0xF0
 #define I2C_TRIAXIS_POLLING  (uint8_t) 0x3E
 #define I2C_TRIAXIS_SB_MODE  (uint8_t) 0xE
-#define DELAY 				 1000
+#define DELAY 				 5000
 #define BAUDRATE_UART 		 115200
-#define UART_DATA_LENGTH     (int) 7
+#define UART_DATA_LENGTH     (int) 6
 #define pin_LED_RED 		 7
 #define pin_LED_GREEN 		 8
 #define pin_LED_BLUE 		 9
-
+#define OK_TRIAXIS 		 1 << 4
 // Private functions
 void I2C_Init(void);
 void LED_Init(void);
@@ -42,9 +42,11 @@ int main(void) {
     	for(int i=0;i<DELAY;i++){}
     	if(Chip_I2C_MasterCmdRead(I2C0, SLAVE_ADDRESS, I2C_TRIAXIS_READ, data, I2C_DATA_LENGTH))
     	{
-    		Chip_GPIO_SetPinState(LPC_GPIO, 0, pin_LED_BLUE, LED_state);
-    		LED_state = !LED_state;
-    		Chip_UART_SendBlocking(LPC_USART, (const void *) data, UART_DATA_LENGTH);
+    		if((data[0] & OK_TRIAXIS) != OK_TRIAXIS)
+    		{  	Chip_GPIO_SetPinState(LPC_GPIO, 0, pin_LED_BLUE, LED_state);
+    			LED_state = !LED_state;
+    			Chip_UART_SendBlocking(LPC_USART, (const void *) (data+1), UART_DATA_LENGTH);
+    		}
     	}
     }
     return 0 ;
