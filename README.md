@@ -1,1 +1,1 @@
-Triaxis
+Project to configure and read a 3 dof magnetometer with I2C and then echo everything on the UART, in my setup I use a UART to USB chip by FDTI and I read everything using a Qt GUI able to plot in real time the stream of data.
